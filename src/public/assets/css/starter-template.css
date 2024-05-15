@@ -1,0 +1,28 @@
+body {
+    padding-top: 70px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+table {
+    text-align: left;
+}
+
+div.thumbnail img {
+    max-height: 200px;
+}
+
+div.form-inline form {
+    display: inline;
+}
+
+.truncate {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}

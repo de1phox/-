@@ -52,11 +52,11 @@ class PlantController extends Controller
         $params = $request->all();
         if ($path = $request->file('image'))
         {
-            $img_path = $path->store('public/plants'); //фото будут сохраняться в папку plants
+            $img_path = $path->store('public/plants');
             $params['image'] = $img_path;
         }
         $plant = Plant::create($params);
-        $categories = PlantCategory::find($request->get('plant_category')); //тут тоже можно на params заменить
+        $categories = PlantCategory::find($request->get('plant_category'));
         if ($categories)
             $plant->categories()->saveMany($categories);
         return redirect()->route('plants.index');
@@ -96,7 +96,7 @@ class PlantController extends Controller
         $params = $request->all();
         if ($file = $request->file('image'))
         {
-            $img_path = $file->store('public/plants'); //фото будут сохраняться в папку plants
+            $img_path = $file->store('public/plants');
             $params['image'] = $img_path;
             if ($old_img = $plant->image)
                 Storage::delete($old_img);

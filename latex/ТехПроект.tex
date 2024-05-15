@@ -144,7 +144,6 @@ MySQL - это одна из самых популярных систем упр
 	~ & да &	name & string \\ \hline 
 	~ & да &	description & text
 \end{xltabular}
-\addtocounter{table}{-1}
 
 
 В таблице \ref{bd2:table} показана структура таблицы plant\_genera.
@@ -161,7 +160,6 @@ MySQL - это одна из самых популярных систем упр
 	primary key & да & name & string \\ \hline 
 	~ & да & description & text
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd3:table} показана структура таблицы product\_types.
 
@@ -176,7 +174,6 @@ MySQL - это одна из самых популярных систем упр
 	\finishhead
 	primary key & да & name & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd4:table} показана структура таблицы plant\_colors.
 
@@ -191,7 +188,6 @@ MySQL - это одна из самых популярных систем упр
 	\finishhead
 	primary key & да & name & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd5:table} показана структура таблицы climate\_zones.
 
@@ -208,7 +204,6 @@ MySQL - это одна из самых популярных систем упр
 	~ & да & lower\_temp\_limit & integer \\ \hline 
 	~ & да & upper\_temp\_limit & integer
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd6:table} показана структура таблицы light\_modes.
 
@@ -223,7 +218,6 @@ MySQL - это одна из самых популярных систем упр
 	\finishhead
 	primary key & да & name & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd7:table} показана структура таблицы soils.
 
@@ -238,7 +232,6 @@ MySQL - это одна из самых популярных систем упр
 	\finishhead
 	primary key & да & name & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd8:table} показана структура таблицы life\_cycles.
 
@@ -253,7 +246,6 @@ MySQL - это одна из самых популярных систем упр
 	\finishhead
 	primary key & да & name & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd9:table} показана структура таблицы plants.
 
@@ -286,7 +278,6 @@ MySQL - это одна из самых популярных систем упр
 	foreign key & нет & leaf\_color2 & string \\ \hline
 	foreign key & нет & leaf\_color3 & string
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd10:table} показана структура таблицы users.
 
@@ -306,7 +297,6 @@ MySQL - это одна из самых популярных систем упр
 	~ & да & password & string \\ \hline
 	~ & да & is\_admin & tinyInteger
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd11:table} показана структура таблицы orders.
 
@@ -327,7 +317,6 @@ MySQL - это одна из самых популярных систем упр
 	~ & нет & email & string \\ \hline
 	foreign key & нет & user\_id & integer
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd12:table} показана структура таблицы order\_plant.
 
@@ -345,7 +334,6 @@ MySQL - это одна из самых популярных систем упр
 	foreign key & да & order\_id  & integer \\ \hline
 	foreign key & да & plant\_id & integer
 \end{xltabular}
-\addtocounter{table}{-1}
 
 В таблице \ref{bd13:table} показана структура таблицы plant\_plant\_category.
 
@@ -362,7 +350,6 @@ MySQL - это одна из самых популярных систем упр
 	foreign key & да & plant\_category\_id   & integer \\ \hline
 	foreign key & да & plant\_id & integer
 \end{xltabular}
-\addtocounter{table}{-1}
 
 \subsection{Список контроллеров}
 

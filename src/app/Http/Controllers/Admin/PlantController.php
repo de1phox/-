@@ -3,15 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClimateZone;
-use App\Models\LifeCycle;
-use App\Models\LightMode;
 use App\Models\Plant;
 use App\Models\PlantCategory;
-use App\Models\PlantColor;
-use App\Models\PlantGenus;
-use App\Models\ProductType;
-use App\Models\Soil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +15,7 @@ class PlantController extends Controller
      */
     public function index()
     {
-        $plants = Plant::get();
+        $plants = Plant::paginate(5);
         return view('admin/plants/index', compact('plants'));
     }
 
@@ -31,17 +24,7 @@ class PlantController extends Controller
      */
     public function create()
     {
-        $climate_zones = ClimateZone::get();
-        $life_cycles = LifeCycle::get();
-        $light_modes = LightMode::get();
-        $plant_category = PlantCategory::get();
-        $plant_colors = PlantColor::get();
-        $genera = PlantGenus::get();
-        $soils = Soil::get();
-        $product_types = ProductType::get();
-        $plant_categories = PlantCategory::get();
-        return view('admin/plants/form', compact('climate_zones', 'life_cycles', 'light_modes',
-            'plant_category', 'plant_colors', 'genera','soils', 'product_types', 'plant_categories'));
+        return view('admin/plants/form');
     }
 
     /**
@@ -75,17 +58,7 @@ class PlantController extends Controller
      */
     public function edit(Plant $plant)
     {
-        $climate_zones = ClimateZone::get();
-        $life_cycles = LifeCycle::get();
-        $light_modes = LightMode::get();
-        $plant_category = PlantCategory::get();
-        $plant_colors = PlantColor::get();
-        $genera = PlantGenus::get();
-        $soils = Soil::get();
-        $product_types = ProductType::get();
-        $plant_categories = PlantCategory::get();
-        return view('admin/plants/form', compact('plant', 'climate_zones', 'life_cycles', 'light_modes',
-            'plant_category', 'plant_colors', 'genera', 'soils', 'product_types', 'plant_categories'));
+        return view('admin/plants/form', compact('plant'));
     }
 
     /**

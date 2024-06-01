@@ -45,6 +45,7 @@
             @endforeach
             </tbody>
         </table>
+		{{$plants->links('pagination::bootstrap-4')}}
         <a class="btn btn-success" type="button"
            href="{{ route('plants.create') }}">Добавить товар</a>
     </div>

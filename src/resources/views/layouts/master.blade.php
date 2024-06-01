@@ -13,8 +13,6 @@
     </title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    {{--<script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>--}}
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/starter-template.css" rel="stylesheet">
 
@@ -45,10 +43,6 @@
                         <li><a href="{{ route('get-logout') }}">Выход</a></li>
                 @endauth
             </ul>
-
-            {{--            <ul class="nav navbar-nav navbar-right">--}}
-            {{--                <li><a href="http://laravel-diplom-1.rdavydov.ru/admin/home">Панель администратора</a></li>--}}
-            {{--            </ul>--}}
         </div>
     </div>
 </nav>

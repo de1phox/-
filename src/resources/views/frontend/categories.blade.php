@@ -13,4 +13,5 @@
             </p>
         </div>
     @endforeach
+	{{$categories->links(('pagination::bootstrap-4'))}}
 @endsection

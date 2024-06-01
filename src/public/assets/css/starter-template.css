@@ -26,3 +26,13 @@ div.form-inline form {
 -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
+
+.container{
+    width: 90%;
+}
+
+.filter-menu {
+    border-radius: 0;
+    border: 1px solid #eeeeee;
+}
+

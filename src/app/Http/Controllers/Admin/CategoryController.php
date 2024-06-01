@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = PlantCategory::get();
+        $categories = PlantCategory::paginate(5);
         return view('admin/categories/index', compact('categories'));
     }
 

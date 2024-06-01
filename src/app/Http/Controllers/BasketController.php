@@ -8,7 +8,6 @@ use App\Models\Plant;
 use Illuminate\Http\Request;
 use App\Services\CurrencyConversion;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class BasketController extends Controller
 {
@@ -17,6 +16,8 @@ class BasketController extends Controller
         $orderId = session('orderId');
         if (!is_null($orderId)){
             $order = Order::findOrFail($orderId);
+			foreach ($order->products as $product)
+                $product->compareCount();
         }
         else $order = array();
         return view('frontend/basket', compact('order'));
@@ -29,9 +30,23 @@ class BasketController extends Controller
             return redirect()->route('index');
         }
         $order = Order::find($orderId);
-        $success = $order->saveOrder($request->name, $request->phone, $request->address, $request->email, Auth::user()->id);
+        $success = true;
+        foreach ($order->products as $product) {
+            if(!$product->productIsEnough($product->getCountInOrder()))
+                $success = false;
+        }
+        if ($success){
+            $user = null;
+            if(Auth::check())
+                $user = Auth::user()->id;
+            $success = $order->saveOrder($request->name, $request->phone, $request->address, $request->email, $user);
+        }
         if ($success) {
+            foreach ($order->products as $product){
+                $product->reduceQuantity($product->getCountInOrder());
+            }
             session()->flash('success', 'Ваш заказ принят в обработку!');
+
         } else {
             session()->flash('warning', 'Случилась ошибка');
         }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Http\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Plant extends Model
 {
@@ -23,14 +25,42 @@ class Plant extends Model
         return $this->belongsToMany(order::class);
     }
 
-    public function getPriceForCount() {
-        if (!is_null($this->pivot)) {
-            return $this->pivot->plant_count * $this->price;
+    public function productIsEnough($count){
+        if($this->quantity >= $count)
+            return true;
+        else return false;
+    }
+	
+	public function reduceQuantity($count){
+        $this->quantity -= $count;
+        $this->update();
+    }
+
+    public function getCountInOrder(){
+        if (!is_null($this->pivot))
+            return $this->pivot->plant_count;
+		else return 0;
+    }
+
+    public function compareCount(){
+        if ($this->getCountInOrder() > $this->quantity){
+            $this->pivot->plant_count = $this->quantity;
+            $this->pivot->update();
+        }
+    }
+	
+	public function getPriceForCount() {
+        if (!is_null($count = $this->getCountInOrder())) {
+            return $count * $this->price;
         }
         return $this->price;
     }
 
-    public function genus()
+    public function scopeFilter(Builder $builder, QueryFilter $filter){
+        return $filter->apply($builder);
+    }
+	
+	public function genus()
     {
         return $this->belongsTo(PlantGenus::class);
     }
